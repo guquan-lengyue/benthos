@@ -5,11 +5,11 @@
 [![Discord invite][discord-badge]][discord-url]
 [![Docs site][website-badge]][website-url]
 
-Benthos是一个高性能且弹性的流处理器, 能够将各种[数据源][inputs]和[接收器][outputs]连接起来, 在各种模式中[流转, 丰富, 转换, 过滤][processors]你的负载.
+Benthos是一个高性能且弹性的流处理器, 能够将各种[数据源][inputs]和[接收器][outputs]连接起来, 在各种模式中[流转, 丰富, 转换, 过滤][processors]你的数据.
 
 它自带了一种[强大的映射语言][bloblang-about], 这个语言易于的部署和监控, 并且可以让你轻松的在管道(pipeline)中使用. 无论是直接编译成可执行文件, 使用docker镜像, 还是[serverless][serverless]方式, 它都能完全适应云端.
 
-Benthos 是声明式的, 你可以在配置文件中定义你输入, 输出, 和其中一系列的转换
+Benthos 是声明式的, 你可以在配置文件中定义你输入, 输出和其中的一系列的转换
 
 
 ```yaml
@@ -32,18 +32,18 @@ output:
     max_in_flight: 20
 ```
 
-### Delivery Guarantees
+### 消息可达性保证
 
-Delivery guarantees [can be a dodgy subject](https://youtu.be/QmpBOCvY8mY). Benthos processes and acknowledges messages using an in-process transaction model with no need for any disk persisted state, so when connecting to at-least-once sources and sinks it's able to guarantee at-least-once delivery even in the event of crashes, disk corruption, or other unexpected server faults.
+消息可达性保证[是一个棘手的问题](https://youtu.be/QmpBOCvY8mY). Benthos 使用基于进程的事务模型来处理和确认消息, 无需任何磁盘持久化状态, 所以当连接到至少一个数据源和接收器时, 即使在崩溃、磁盘损坏或其他意外服务器故障的情况下, 它也能保证至少一次的投递. 
 
-This behaviour is the default and free of caveats, which also makes deploying and scaling Benthos much simpler.
+这种行为是默认的且没有任何警告，这也使得部署和扩展Benthos变得更加简单。
 
-## Supported Sources & Sinks
+## 支持的数据源和接收器
 
-AWS (DynamoDB, Kinesis, S3, SQS, SNS), Azure (Blob storage, Queue storage, Table storage), GCP (Pub/Sub, Cloud storage, Big query), Kafka, NATS (JetStream, Streaming), NSQ, MQTT, AMQP 0.91 (RabbitMQ), AMQP 1, Redis (streams, list, pubsub, hashes), Cassandra, Elasticsearch, HDFS, HTTP (server and client, including websockets), MongoDB, SQL (MySQL, PostgreSQL, Clickhouse, MSSQL), and [you know what just click here to see them all, they don't fit in a README][about-categories].
+AWS (DynamoDB, Kinesis, S3, SQS, SNS), Azure (Blob storage, Queue storage, Table storage), GCP (Pub/Sub, Cloud storage, Big query), Kafka, NATS (JetStream, Streaming), NSQ, MQTT, AMQP 0.91 (RabbitMQ), AMQP 1, Redis (streams, list, pubsub, hashes), Cassandra, Elasticsearch, HDFS, HTTP (server and client, including websockets), MongoDB, SQL (MySQL, PostgreSQL, Clickhouse, MSSQL),  [更多的内容可以点击这里查看][about-categories].
 
 Connectors are being added constantly, if something you want is missing then [open an issue](https://github.com/benthosdev/benthos/issues/new).
-
+连接器正在不断增加，如果缺少您想要的内容，请提出问题。
 ## Documentation
 
 If you want to dive fully into Benthos then don't waste your time in this dump, check out the [documentation site][general-docs].
