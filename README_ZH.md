@@ -42,49 +42,50 @@ output:
 
 AWS (DynamoDB, Kinesis, S3, SQS, SNS), Azure (Blob storage, Queue storage, Table storage), GCP (Pub/Sub, Cloud storage, Big query), Kafka, NATS (JetStream, Streaming), NSQ, MQTT, AMQP 0.91 (RabbitMQ), AMQP 1, Redis (streams, list, pubsub, hashes), Cassandra, Elasticsearch, HDFS, HTTP (server and client, including websockets), MongoDB, SQL (MySQL, PostgreSQL, Clickhouse, MSSQL),  [更多的内容可以点击这里查看][about-categories].
 
-Connectors are being added constantly, if something you want is missing then [open an issue](https://github.com/benthosdev/benthos/issues/new).
-连接器正在不断增加，如果缺少您想要的内容，请提出问题。
-## Documentation
+更多的连接器还在开发中，如果没有你想要的，请提[issue](https://github.com/benthosdev/benthos/issues/new).
 
-If you want to dive fully into Benthos then don't waste your time in this dump, check out the [documentation site][general-docs].
+## 文档
 
-For guidance on how to configure more advanced stream processing concepts such as stream joins, enrichment workflows, etc, check out the [cookbooks section.][cookbooks]
+如果你想直接深入了解Benthos, 可以直接点击跳转到具体的[文档][general-docs].
 
-For guidance on building your own custom plugins in Go check out [the public APIs.][godoc-url]
+关于如何配置告警的流处理如流链接, 丰富工作流等, 可以查看[烹饪部分][cookbooks]
 
-## Visual Interface
+关于如何开发自己的插件, 可以查看[公开API][godoc-url]
 
-Do you like looking at stuff? Get angry and smash things when you're forced to read? If you're looking for a visual interface for Benthos check out [Benthos Studio][benthos-studio], it's a config builder, linter, and deployment management solution all baked into a single application.
+## 可视化界面
 
-## Install
+当被迫阅读时会生气并砸东西吗? 如果你正在寻找一个 Benthos 的可视化界面，请查看[Benthos Studio][benthos-studio], 它是一个配置构建器、语法检查工具和部署管理解决方案, 集成在一个单一的应用程序中。
 
-Grab a binary for your OS from [here.][releases] Or use this script:
+## 安装
+
+在[这里][releases]获取你操作系统的可执行文件, 或者使用这个脚本: 
 
 ```shell
 curl -Lsf https://www.benthos.dev/sh/install | bash
 ```
 
-Or pull the docker image:
+或者拉取docker镜像: 
 
 ```shell
 docker pull ghcr.io/benthosdev/benthos
 ```
 
-Benthos can also be installed via Homebrew:
+Benthos也可以用Homebrew安装: 
+
 
 ```shell
 brew install benthos
 ```
 
-For more information check out the [getting started guide][getting-started].
+想要更多的信息可以点击这里[开启教程][getting-started].
 
-## Run
+## 运行
 
 ```shell
 benthos -c ./config.yaml
 ```
 
-Or, with docker:
+或者使用docker
 
 ```shell
 # Using a config file
@@ -98,15 +99,15 @@ docker run --rm -p 4195:4195 ghcr.io/benthosdev/benthos \
   -s "output.kafka.topic=benthos_topic"
 ```
 
-## Monitoring
+## 监控
 
-### Health Checks
+### 健康检测
 
-Benthos serves two HTTP endpoints for health checks:
-- `/ping` can be used as a liveness probe as it always returns a 200.
-- `/ready` can be used as a readiness probe as it serves a 200 only when both the input and output are connected, otherwise a 503 is returned.
+Benthos服务有两个Http接口用于健康检测: 
+- `/ping` 可以用于存活检测, 它永远返回200
+- `/ready` 可以用于就绪检测, 只有当输入和输出都连接时才会返回200, 否则返回503.
 
-### Metrics
+### 指标
 
 Benthos [exposes lots of metrics][metrics] either to Statsd, Prometheus, a JSON HTTP endpoint, [and more][metrics].
 
