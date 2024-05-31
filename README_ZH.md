@@ -109,19 +109,20 @@ Benthos服务有两个Http接口用于健康检测:
 
 ### 指标
 
-Benthos [exposes lots of metrics][metrics] either to Statsd, Prometheus, a JSON HTTP endpoint, [and more][metrics].
+Benthos 暴露了很多指标如StatsD, Prometheus, JSON http接口和[更多][metrics]. 
 
-### Tracing
+### 跟踪
 
-Benthos also [emits open telemetry tracing events][tracers], which can be used to visualise the processors within a pipeline.
+Benthos 还[发射公开遥测跟踪事件][tracers], 它可以在可视化处理器的管道中使用. 
 
-## Configuration
+## 配置
 
-Benthos provides lots of tools for making configuration discovery, debugging and organisation easy. You can [read about them here][config-doc].
+Benthos 提供了许多工具, 使得配置发现, 调试, 组织变得简单. 你可以在这里[阅读相关内容][config-doc]
 
-## Build
+## 构建
 
 Build with Go (any [currently supported version](https://go.dev/dl/)):
+使用[任意当前Go版本](https://go.dev/dl/)构建
 
 ```shell
 git clone git@github.com:benthosdev/benthos
@@ -129,43 +130,43 @@ cd benthos
 make
 ```
 
-## Lint
+## 代码检查
 
-Benthos uses [golangci-lint][golangci-lint] for linting, which you can install with:
+Benthos 使用 golangci-lint 进行代码检查，你可以通过以下命令安装: 
 
 ```shell
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 ```
 
-And then run it with `make lint`.
+然后使用`make lint`运行它
 
-## Plugins
+## 插件
 
-It's pretty easy to write your own custom plugins for Benthos in Go, for information check out [the API docs][godoc-url], and for inspiration there's an [example repo][plugin-repo] demonstrating a variety of plugin implementations.
+用 Go 为 Benthos 编写自定义插件非常容易，更多信息请查阅[API 文档][godoc-url]，获取灵感可以查看展示各种插件实现的[示例仓库][plugin-repo]。
 
-## Extra Plugins
+## 扩展插件
 
-By default Benthos does not build with components that require linking to external libraries, such as the `zmq4` input and outputs. If you wish to build Benthos locally with these dependencies then set the build tag `x_benthos_extra`:
+默认情况下，Benthos 构建时不会包含外部依赖，例如 `zmq4` 输入和输出。如果你希望在本地构建 Benthos 并包含这些依赖项，请设置构建标签 x_benthos_extra：
 
 ```shell
-# With go
+# 用Go构建
 go install -tags "x_benthos_extra" github.com/benthosdev/benthos/v4/cmd/benthos@latest
 
-# Using make
+# 使用make构建
 make TAGS=x_benthos_extra
 ```
 
-Note that this tag may change or be broken out into granular tags for individual components outside of major version releases. If you attempt a build and these dependencies are not present you'll see error messages such as `ld: library not found for -lzmq`.
+请注意，此标签可能会更改，或者在主要版本发布之外被分解为用于单个组件的细粒度标签。如果尝试构建时缺少这些依赖项，你将会看到诸如 ld: library not found for -lzmq 的错误消息。
 
-## Docker Builds
+## Docker 构建
 
-There's a multi-stage `Dockerfile` for creating a Benthos docker image which results in a minimal image from scratch. You can build it with:
+有一个多阶段的 Dockerfile 用于创建 Benthos Docker 镜像，最终会生成一个基于 scratch 的最小镜像。你可以使用以下命令构建它：
 
 ```shell
 make docker
 ```
 
-Then use the image:
+然后使用这个镜像: 
 
 ```shell
 docker run --rm \
@@ -175,9 +176,9 @@ docker run --rm \
 	benthos -c /config.yaml
 ```
 
-## Contributing
+## 贡献
 
-Contributions are welcome, please [read the guidelines](CONTRIBUTING.md), come and chat (links are on the [community page][community]), and watch your back.
+欢迎贡献，请阅读指南，加入我们的讨论（链接在[社区页面][community]上），然后期待你的贡献。
 
 [inputs]: https://www.benthos.dev/docs/components/inputs/about
 [about-categories]: https://www.benthos.dev/docs/about#components
